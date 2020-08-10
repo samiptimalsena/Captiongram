@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>myDA</title>
+	<link rel="stylesheet" type="text/css" href="css/register.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+	
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
+
+	<link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
+
+	<!-- Add icon library -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="container">
+		<div class="company-name">
+			<h2>Caption Gram</h2>
+		</div>
+		<div class="home-wrapper">
+			<div class="img">
+				<img src="img/bg2.svg">
+			</div>
+			<div class="form-wrapper">
+				<div class="login-info">
+					<p class="msg1">You're New Here!</p>
+					<p class="msg2">Let's get started on the process of getting a digital Address.</p>
+				</div>
+				<form>
+
+					<div class="input-container border-top">
+                        <label for="first_name">First Name</label>
+						<input required class="input-field" type="text" placeholder="Enter Your First Name" name="first_name" required>
+					</div>
+					<div class="input-container border-bottom">
+                        <label for="last_name">Last Name</label>
+						<input required class="input-field" type="text" placeholder="Enter Your Last Name" name="last_name">
+                    </div>
+                    
+					<div class="input-container border-full">
+                        <label for="email">Email</label>
+						<input required class="input-field" type="email" placeholder="Enter Your Email" name="email">
+                    </div>
+                    
+                    <div class="input-container border-full input-mobile">
+                        <label for="number">Mobile Number</label>
+						<input required class="input-field" type="tel" pattern="[+]{1}[0-9]{11,14}" placeholder="eg: 772123456" name="number">
+                    </div>
+
+                    <p class="msg-phone">You will receive a one-time passcode via SMS to verify the phone number</p>
+                    
+                    <div class="input-container border-full">
+                        <label for="password">password</label>
+						<input required class="input-field" type="password" placeholder="Enter Your Desired Password" name="password">
+					</div>
+                    
+                    
+
+					<div class="two_row">
+						<button class="login">Sign Up</button>
+					</div>
+					<p class="msg-login">Have an account already? <a href="#">Login</a></p>
+
+				</form>
+			</div>
+		</div>
+    </div>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
