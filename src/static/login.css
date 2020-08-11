@@ -11,7 +11,6 @@
 	background: rgb(221,251,251);
 	background: linear-gradient(135deg, rgba(221,251,251,1) 0%, rgba(250,237,234,1) 100%);
 }
- 
 
 .company-name h2{
 	margin-left: 5%;
@@ -27,6 +26,7 @@
 	width: 100%;
 	height: 100%;
 }
+
 .img{
 	margin-top: 5em;
 	flex: 2;
@@ -46,9 +46,8 @@
 /* Forms */
 .form-wrapper{
 	flex: 1;
-    padding: 2em;
-    position: relative;
-    top: -50px;
+	padding: 2em;
+	margin-top: 50px;
 }
 
 /* Lable before the login  */
@@ -66,42 +65,38 @@
 }
 
 /* Form Inputs */
+
 .input-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+	padding: absolute;
 	width: 80%;
 	height: 60px;
 	background: #ffffff;
-    border: 1px solid #e3e1e1;
-    padding:2em 0em;
+	border: 1px solid #e3e1e1;
+	padding: 10px;
 }
-
 
 .input-container:focus-within{
 	background: #f5f9fd;
 }
-
-.input-container label{
-    width: 80%;
-    text-align: left;
-    flex: 1;
-    font-size: .8em;
-    margin-left: 15px;
-    color: #888888;
+/* Style the form icons */
+.icon {
+	color: #909090;
+	padding: 4px;
+	margin-left: 18px;
+	font-size: 1.6em;
+	position: absolute;
 }
-
   
 /* Style the input fields */
 .input-field {
-    flex: 2;
-	width: 80%;
+	width: 100%;
 	font-family: 'Ubuntu', sans-serif;
 	color: rgb(63,61,86);
 	outline: none;
 	border: 0;
 	font-size: 1em;
 	margin-left: 15px;
+	text-align: center;
 }
   
 .input-field:focus {
@@ -117,21 +112,23 @@
 	margin-bottom: 15px;
 }
 
-.border-full{
-	border-radius: 10px 10px 10px 10px;
-	margin-bottom: 15px;
+/* Remember me and forgot password */
+.two_opposite{
+	display: flex;
+	width: 90%;
+	color: #565469;
+	justify-content: space-between;
+	margin-bottom: 20px;
 }
-/* less margin for the number */
-.input-mobile{
-    margin-bottom: 5px;
-}
+
+/* remeber me checkbox */
 
 
 /* Login create accound button */
 .two_row{
 	display: flex;
 	width: 90%;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 }
 
 .two_row button{
@@ -149,7 +146,7 @@
 }
 
 .two_row > .login{
-	background-color: #2C83F6;
+	background-color: #2C83F6;;
 	color: white;
 }
 
@@ -165,29 +162,22 @@
 
 /* log in with google  */
 /*lable for login with google*/
-.input-mobile{
-    margin-bottom: 5px;
-}
-
-.msg-phone{
-    font-size: 12px;
-    margin-bottom: 15px;
-    color: #888888;
-    font-family: 'Poppins', sans-serif;
-    text-align: justify;
-    width: 80%;
-}
-
-.msg-login{
-	font-size: 16px;
-	margin-top: 10px;
+.msg-google{
+	font-size: 24;
+	margin-top: 24px;
+	margin-bottom: 15px;
 	color: #888888;
 }
-.msg-login a{
-    text-decoration: none;
-    color: #67C016;
+/* Login with google button */
+.google-button {
+	background-color: rgb(221,251,251);
+	background-image: url('./img/google.jpg');
+	background-size: cover;
+	width: 50px;
+	height: 50px; 
+	border-radius: 50%;
+	box-shadow: 0px 0px 1px 5px rgb(218, 217, 216);
 }
-
 
 
 /* for the mobile hide the image */
@@ -200,11 +190,7 @@
 		overflow: visible;
 		text-align: center;
 	
-    }
-    
-    .form-wrapper{
-        top: 0;
-    }
+	}
 
 	.home-wrapper{
 		display: block;
@@ -232,13 +218,24 @@
 
 	.input-container{
 		width: 100%;
-    }
-    
-    .two_row{
-        display: block;
-        width: 100%;
-        text-align: center;
-    }
+	}
+	
+	.two_opposite{
+		display: inline;
+	}
 
+	.two_opposite div{
+		padding: .2em 0;
+	}
 
+	.two_row{
+		margin-top: 10px;
+		display: flex;
+		width: 100%;
+		justify-content: space-between;
+	}
+
+	.google-button{
+		margin-left: 40%;
+	}
 }
