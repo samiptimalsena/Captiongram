@@ -179,6 +179,9 @@
 	box-shadow: 0px 0px 1px 5px rgb(218, 217, 216);
 }
 
+.google-button:hover{
+	cursor: pointer;
+}
 
 /* for the mobile hide the image */
 @media only screen and (max-width: 600px) {
