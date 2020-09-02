@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Photo</title>
+	<link rel="stylesheet" type="text/css" href="static/css/home.css">
+    <link rel="stylesheet" type="text/css" href="static/css/add_caption.css">
+	
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+	
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
+
+	<link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
+
+	<!-- Add icon library -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+	<div class="container">
+		<div class="main-content">
+            <div class="top-wrapper">
+                <div class="company-name">
+                    <h2>Captiongram</h2>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="menu-title">
+                    <h3>Uploads</h3>
+                </div>
+                <div class="menu-item">
+                    <a href="/home" class="menu-item-unactive">Captions Feed</a>
+                    <a href="/add_captions" class="menu-item-active">Add New Image</a>
+                </div>
+            </div>
+            <form enctype="multipart/form-data" method="post">
+                <div class="home-content">
+                    {% for category,message in get_flashed_messages(with_categories=True) %}
+						<div class="alert-error" style="padding: 10px;max-width: 90%; {% if category == 'success' %}color:#67C016;{% endif %}{% if category == 'danger' %}color:red;{% endif %}">
+							<i>{{message}}<i>
+						</div>
+					{% endfor %}
+                    <div class="add-address-content">
+                    <div class="address-name">
+                        <div class="input-container border-full">
+                            <input id="address-search" class="input-field" type="text" placeholder="Please, upload the image file to view the AI generated caption" disabled name="email">
+                        </div>
+                        <a href="/home">
+                            <div class="current-address">
+                                <i class="fas fa-compass icon-current"></i>
+                                <p>Switch to captions feed</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="input-container border-full">
+                        <label>*only jpeg,png supported allowed</lablel>
+                    
+                    <div>
+                        <input required class="input-field" type="file" name="file" required accept="image/png, image/jpeg">
+                    </div>
+                    </div>
+                    
+                    <div class="submit-button">
+                        <button type="submit">Generate Captions</button>
+                    </div>
+                </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="side-profile">
+            <div class="fixed-profile">
+                <div class="user-profile">
+                    <img src="static/img/avatar.svg">
+                    <div class="user-info">
+                        <p class="ptitle">{{ user.name }}</p>
+                        <p class="pemail">{{ user.email }}</p>
+                        <p><a href="/logout">Log Out</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</body>
+</html>

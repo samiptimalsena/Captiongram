@@ -1,0 +1,234 @@
+input[type="text"]:disabled {
+    background: #ffffff;
+}
+
+.add-address-content{
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 1em;
+}
+
+.add-address-content a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+/* Form Inputs */
+.digital-lz{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+	width: 100%;
+	height: 60px;
+	background: #ffffff;
+    border: 1px solid #e3e1e1;
+    padding:2em 0em;
+    overflow: hidden;
+}
+
+.digital-lz:focus-within{
+	background: #f5f9fd;
+}
+
+.digital-lz label{
+    width: 100%;
+    text-align: left;
+    flex: 1;
+    font-size: .8em;
+    margin-left: 15px;
+    color: #888888;
+}
+.digital-lz .input-field-lz {
+    flex: 2;
+	width: 100%;
+	font-family: 'Ubuntu', sans-serif;
+	color: rgb(63,61,86);
+	outline: none;
+	border: 0;
+	font-size: 1em;
+	margin-left: 15px;
+}
+
+
+.digital-lz .input-field-lz:focus {
+	background: #f5f9fd;
+}
+.add-address-content .input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+	width: 100%;
+	height: 60px;
+	background: #ffffff;
+    border: 1px solid #e3e1e1;
+    padding:2em 0em;
+    overflow: hidden;
+}
+
+
+.add-address-content .input-container:focus-within{
+	background: #f5f9fd;
+}
+
+.add-address-content .input-container label{
+    width: 100%;
+    text-align: left;
+    flex: 1;
+    font-size: .8em;
+    margin-left: 15px;
+    color: #888888;
+}
+
+  
+/* Style the input fields */
+.add-address-content .input-field {
+    flex: 2;
+	width: 100%;
+	font-family: 'Ubuntu', sans-serif;
+	color: rgb(63,61,86);
+	outline: none;
+	border: 0;
+	font-size: 1em;
+	margin-left: 15px;
+}
+  
+.add-address-content .input-field:focus {
+	background: #f5f9fd;
+}
+
+.border-full{
+	border-radius: 10px 10px 10px 10px;
+	margin-bottom: 15px;
+}
+
+
+.current-address{
+    background: #67C016;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: stretch;
+    padding: 10px;
+}
+
+.icon-current{
+    padding: 10px;
+    font-size: 2em;
+}
+
+.current-address p{
+    text-align: left;
+    padding-top: 15px;
+}
+
+
+
+.use-map-view{
+    border: 1px solid #EAEAEA;
+    color: #A5A5A5;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.use-map-view img{
+    height: 50px;
+    display: none;
+}
+
+.use-map-view p{
+    text-align: left;
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+
+.submit-button button{
+    border: 0;
+    padding: 15px 30px;
+    border-radius: 20px;
+    background-color: #2C83F6;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+@media(min-width: 600px) {
+    .home-content{
+        display: block;
+    }
+    .address-name{
+        display: flex;
+    }
+
+    .input-container{
+        flex:1;
+        margin-right: 10px;
+    }
+
+    .current-address{
+        flex: 1;
+        margin-right: 10px;
+        flex-direction: column;
+        padding: 10px;
+        font-size: 12px;
+        height: 66px;
+    }
+
+    .current-address p{
+        padding: 0px;
+    }
+
+    .icon-current{
+        padding: 0 10px;
+    }
+
+    .use-map-view{
+        width: 150px;
+        height: 66px;
+        padding: 10px;
+        flex: 2;
+    }
+    
+    .use-map-view img{
+        height: 50px;
+        display: block;
+    }
+    
+    .use-map-view p{
+        text-align: left;
+        padding-left: 10px;
+        font-size: 12px;
+    }
+
+    .digital-lz{
+        height: 100px;
+    }
+
+    .digital-lz .input-field-lz {
+        font-size: 3em;
+    }
+
+    .submit-button{
+        margin-top: 25px;
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+
+    .add-address-content{
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 2em 3em;
+    }
+
+    .submit-button button{
+        padding: 12px 35px;
+        border-radius: 20px;
+        cursor: pointer;
+
+    }
+    
+}

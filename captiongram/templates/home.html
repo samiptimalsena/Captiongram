@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home | Captiongram</title>
+	<link rel="stylesheet" type="text/css" href="static/css/home.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+	
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
+
+	<link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
+
+	<!-- Add icon library -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="container">
+		<div class="main-content">
+            <div class="top-wrapper">
+                <div class="company-name">
+                    <h2>Captiongram</h2>
+                </div>
+            </div>
+            <div class="menu-wrapper">
+                <div class="menu-title">
+                    <h3>Dashboard</h3>
+                </div>
+                <div class="menu-item">
+                    <a href="/home" class="menu-item-active">Captions Feed</a>
+                    <a href="/add_captions" class="menu-item-unactive">Add New Image</a>
+                </div>
+            </div>
+            <div class="home-content">
+                {% for category,message in get_flashed_messages(with_categories=True) %}
+						<div class="caption-box" style="max-height:60px">
+                            <div class="alert-error" style="padding: 10px;max-width: 90%; {% if category == 'success' %}color:#67C016;{% endif %}{% if category == 'danger' %}color:red;{% endif %}">
+                                <i>{{message}}<i>
+                            </div>
+                        </div>
+                {% endfor %}
+                
+                {% for cap in user.captions %}
+                    <div class="caption-box">
+                        <div class="caption-user">
+                            <img src="static/img/avatar.svg">
+                            <p>{{cap.user_name}}</p>
+                        </div>
+                        <div class="caption-image">
+                            <img src="static/captions/{{cap.caption_image}}">
+                        </div>
+                        <div class="caption-text">
+                            <p>{{cap.caption}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+                
+
+
+            </div>
+        </div>
+        <div class="side-profile">
+            <div class="fixed-profile">
+                <div class="user-profile">
+                    <img src="static/img/avatar.svg">
+                    <div class="user-info">
+                        <p class="ptitle">{{ user.name }}</p>
+                        <p class="pemail">{{ user.email }}</p>
+                        <p><a href="/logout">Log Out</a></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

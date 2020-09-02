@@ -1,0 +1,421 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.container{
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;  
+}
+
+.main-content{
+    background: rgb(221,251,251);
+	background: linear-gradient(135deg, rgba(221,251,251,1) 0%, rgba(250,237,234,1) 100%);    
+}
+
+.top-wrapper{
+	display: flex;
+ 	flex-direction: column;
+}
+
+/*First title done*/
+.company-name h2{
+    padding-top: 10px;
+	font-family: 'Ubuntu', sans-serif;
+	/* font-family: 'Raleway', sans-serif; */
+	font-size: 40px;
+	color: #3F3D56;
+}
+/*First title done*/
+
+/* search */
+.search-bar{
+    padding: 8px 20px;
+    margin-top: 10px;
+}
+
+.search-bar form{
+    text-align: center;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+	width: 100%;
+	height: 2.5em;
+	background: #ffffff;
+	border: 1px solid #e3e1e1;
+    padding: 10px;	
+    border-radius: 20px;
+}
+
+.input-container:focus-within{
+	background: #f5f9fd;
+}
+/* Style the form icons */
+.icon {
+	color: #909090;
+	text-align: center;
+	padding: 0px;
+	margin-left: 18px;
+	font-size: 1.4em;
+}
+  
+/* Style the input fields */
+.input-field {
+	width: 100%;
+	font-family: 'Ubuntu', sans-serif;
+	color: rgb(63,61,86);
+	outline: none;
+	border: 0;
+	font-size: .8em;
+	margin-left: 15px;
+}
+  
+.input-field:focus {
+	background: #f5f9fd;
+}
+/* search done */
+
+
+/* menu part */
+.menu-wrapper{
+	padding: 0em 2em;
+}
+
+.menu-title{
+	text-align: center;
+}
+.menu-title h3{
+	padding-top: 10px;
+	font-family: 'Ubuntu', sans-serif;
+	/* font-family: 'Raleway', sans-serif; */
+	font-size: 26px;
+	color: #3F3D56;
+}
+.menu-item{
+	/* background-color: red; */
+	display: flex;
+	justify-content: space-around;
+	padding: .5em 0em;
+	color: #3F3D56;
+}
+.menu-item a{
+	text-decoration: none;
+	position: relative;
+	padding: 8px 0px;
+	/* border-bottom: 4px solid #2C83F6;
+	 */
+}
+
+.menu-item-active{
+	font-weight: bold;
+	color: #3F3D56;
+}
+
+.menu-item-unactive{
+	color: #818181;
+}
+.menu-item-active::after{
+	content: '';
+	position: absolute;
+	bottom: 0px;
+	left: 0;
+	width: 50px;
+	border-bottom: 4px solid #2C83F6;;
+}
+
+.home-content{
+	padding: 1em;
+}
+/* menu part done :D */
+
+/* Caption box */
+.caption-box{
+	padding-top: 10px;
+	border-radius: 10px;
+	width: 100%;
+	height: 430px;
+	background-color: #fff;
+	overflow: hidden;
+	margin-top: 25px;
+	margin-bottom: 15px;
+}
+
+.caption-user{
+	display: flex;
+	align-items: center;
+	background-color: white;
+	padding: .5em 1em;
+	max-height: 80px;
+}
+
+.caption-user img{
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	border: 2px solid #2C83F6;
+}
+
+.caption-user p{
+	padding: 0;
+	padding:10px 2px;
+	margin-left: 1em;
+	font-size:1.1em;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+.caption-image{
+	padding: 0;
+	background-color: #fff;
+}
+
+.caption-image img{
+	width: 100%;
+	height: 300px;
+	object-fit: contain;
+}
+
+.caption-text p{
+	display: block;
+	height: 60px;
+	padding: 6px 7px;
+	font-size: .9em;
+	color:#818181;
+	text-align: center;
+	background-color: #fff;
+}
+
+
+
+
+.caption-label{
+	
+}
+/* Address box done */
+
+/* Add address */
+.address-add{
+	background-color: #ffffff;
+	color: #67C016;
+	margin: 10px 0px;
+	width: 100%;
+	height:35vw;
+	border-radius: 10px;
+	padding: 1em 1.6em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.address-add p{
+	display: none;
+}
+.a-plus{
+	font-size: 50px;
+	color: #818181;
+}
+
+.address-add:hover{
+	background-color:#67C016;
+	color: #ffffff;
+}
+.address-add:hover .a-plus{
+	color: #ffffff;
+}	
+
+.address-add:hover p{
+	display: block;
+}	
+/* Add address ends */
+
+/* Map view starts */
+.address-map{
+	background-color: #ffffff;
+	margin: 15px 0px;
+	width: 100%;
+	height:20vw;
+	border-radius: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.address-map img{
+	flex: 2;
+}
+
+.address-map a{
+	flex: 5;
+	text-decoration: none;
+	padding: 1em 3em;
+	font-family: 'Ubuntu', sans-serif;;
+	text-align: left;
+	color: #818181;
+	font-size: 22px;
+
+}
+/* Map view ends */
+.user-actions{
+
+	display: flex;
+	justify-content: center;
+	padding: .5em 0em;
+	background-color: #ffffff;
+}
+.user-actions a{
+	margin-right: 20px;
+	text-decoration: none;
+	color: #818181;
+	border:1px solid #818181;
+	padding: 5px 15px;
+	border-radius: 20px;
+}
+
+/* User profile */
+.user-profile{
+	padding: .5em;
+	display: flex;
+	justify-content: start;
+	text-align: left;
+}
+.user-profile img{
+	width: 100px;
+}
+
+.user-info{
+	overflow: hidden;
+	padding: 1em 2em;
+}
+
+.user-info p{
+	padding: 2px;
+}
+
+.user-info .ptitle{
+	font-family: 'Ubuntu', sans-serif;
+	/* font-family: 'Raleway', sans-serif; */
+	font-size: 26px;;
+	color: #3F3D56;
+}
+
+.user-info .pemail{
+	color: #818181;
+	margin-bottom: 8px;
+}
+
+.user-info a{
+	text-decoration: none;
+	color: #818181;
+	border:1px solid #67C016;
+	padding: 5px 15px;
+	border-radius: 20px;	
+}
+/* User profile ends */
+@media(min-width: 1000px) {
+	.container{
+		flex-direction: row;
+	}
+
+	.main-content{
+		flex: 5;
+		padding-left:10em;
+		padding-right: 6em;
+	}
+
+	.side-profile{
+
+		padding: 0 2em;
+		padding-top: 3em;
+		flex: 1;
+	}
+
+
+	.top-wrapper{
+		margin-top: 1em;
+		flex-direction: row;
+		justify-content: center;
+	}
+	.company-name{
+		flex: 1;
+	}
+	.search-bar{
+		flex:2
+	}
+
+	.company-name h2{
+		text-align: center;
+		font-size: 50px;
+	}
+
+	.menu-title{
+		margin-top: 2.5em;
+	}
+
+	.menu-title h3{
+		text-align: left;
+		font-size: 32px;
+	}
+
+	.menu-wrapper{
+		padding-left: 0;
+	}
+
+	.menu-item{
+		margin-top: 10px;
+		padding-left: 0;
+		justify-content: start;
+	}
+
+	.menu-item a{
+		padding-right: 2em;
+	}
+
+	/* side bar */
+	.side-profile{
+		padding: 24px 1em;
+	}
+
+	.fixed-profile{
+		/* position: absolute; */
+		width: 400px;
+	}
+
+	.user-profile{
+		position: fixed;
+	}
+
+	/* caption part */
+	/* Caption box */
+	.home-content{
+		padding: 0;
+	}
+
+	.caption-box{
+		margin-bottom: 40px;
+		padding-top: 10px;
+		border-radius: 10px;
+		width: 85%;
+		height: 505px;
+	}
+
+	.caption-image img{
+		width: 100%;
+		height: 380px;
+		object-fit: cover;
+	}
+
+	.caption-text p{
+		display: block;
+		height: 60px;
+		padding: 6px 7px;
+		font-size: .9em;
+		color:#818181;
+		text-align: center;
+		background-color: #fff;
+	}
+    
+}
