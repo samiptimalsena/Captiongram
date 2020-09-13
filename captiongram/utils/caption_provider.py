@@ -11,9 +11,11 @@ def generate_caption(image_name):
     pillow image instance is made and send for the model infernce
     reutrns the resulting caption
     """
-    picture_path = os.path.join(current_app.root_path, 'static/captions', image_name)
+    picture_path = os.path.join(current_app.root_path, 'static/temp', image_name)
     
     result=" ".join(evaluate(picture_path)[:-1])+"."
+
+    #result=model_prediction(picture_path)
     
     return result
 

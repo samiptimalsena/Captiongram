@@ -1,4 +1,5 @@
 import os
+from PIL import Image
 
 from flask import current_app as app
 from flask import render_template, url_for, flash, redirect, request, Blueprint, session
@@ -90,7 +91,7 @@ def logout():
     return redirect(url_for('users.index'))
 
 
-@users.route("/home")
+@users.route("/home")   
 @login_required
 def home():
     #get captions
@@ -114,6 +115,10 @@ def home():
 def add_captions():
     
     if request.method == 'POST':
+        temp_path = os.path.join(app.root_path,'static/temp')
+        for fname in os.listdir(temp_path):
+            os.remove(os.path.join(temp_path,fname))  #deleting any image that exist in the temp directory
+
         if 'file' not in request.files:
             flash('No suppored image uploaded','danger')
             return redirect(request.url)
@@ -165,6 +170,11 @@ def commit_captions(rawcaption,caption_text):
     text = caption_text
     user_name = current_user.first_name +" "+current_user.last_name
     user_id = current_user.id
+
+    temp_image_path = os.path.join(app.root_path, 'static/temp', image)
+    caption_image_path=os.path.join(app.root_path,'static/captions',image)
+    i = Image.open(temp_image_path)
+    i.save(caption_image_path)
 
 
     #create instance & write to the model 
