@@ -12,7 +12,7 @@ from datetime import datetime
 #custom modues 
 from captiongram import db, bcrypt,login_manager
 from captiongram.users.forms import RegistrationForm, LoginForm
-from captiongram.models import User,Captions
+from captiongram.models import User,Post
 from . import helper
 
 #caption generation part
@@ -95,18 +95,19 @@ def logout():
 @login_required
 def home():
     #get captions
-    captions = Captions.query.order_by(Captions.up_loaded.desc()).all()
-
-    print(captions)
+    posts = Post.query.order_by(Post.up_loaded.desc()).all()
+    like_counts=[len(post.LikedBy) for post in posts ]
+    print(posts)
+    print(like_counts)
 
     #get user info 
     user_info = {
         "name":current_user.first_name +" "+ current_user.last_name,
-        "email":current_user.email,
-        "captions":captions,
+        "email":current_user.email
     }
+    posts=zip(posts,like_counts)
 
-    return render_template('home.html',user=user_info)
+    return render_template('home.html',user=user_info,posts=posts)
 
 
 
@@ -178,7 +179,7 @@ def commit_captions(rawcaption,caption_text):
 
 
     #create instance & write to the model 
-    caption = Captions(
+    post = Post(
         caption = text,
         caption_image = image,
         user_id = user_id,
@@ -186,9 +187,21 @@ def commit_captions(rawcaption,caption_text):
         up_loaded = datetime.now()
     )
 
-    db.session.add(caption)
+    db.session.add(post)
     db.session.commit()
 
     flash('Your pic sucessfully uploaded :D', 'success')    
 
+    return redirect(url_for('users.home'))
+
+@users.route('/like/<int:post_id>/<action>')
+@login_required
+def like_action(post_id, action):
+    post = Post.query.filter_by(id=post_id).first_or_404()
+    if action == 'like':
+        current_user.like_post(post)
+        db.session.commit()
+    if action == 'unlike':
+        current_user.unlike_post(post)
+        db.session.commit()
     return redirect(url_for('users.home'))

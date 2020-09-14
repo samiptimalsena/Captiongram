@@ -42,18 +42,27 @@
                         </div>
                 {% endfor %}
                 
-                {% for cap in user.captions %}
+                {% for post,like_count in posts %}
                     <div class="caption-box">
+                        <div style="margin-top: 10px;">
+                            {% if current_user.has_liked_post(post) %}
+                                <a href="{{ url_for('users.like_action', post_id=post.id, action='unlike') }}">Unlike</a>
+                            {% else %}
+                                <a href="{{ url_for('users.like_action', post_id=post.id, action='like') }}">Like</a>
+                            {% endif %}
+                            <p>{{like_count}}</p>
+                        </div>
                         <div class="caption-user">
                             <img src="static/img/avatar.svg">
-                            <p>{{cap.user_name}}</p>
+                            <p>{{post.user_name}}</p>
                         </div>
                         <div class="caption-image">
-                            <img src="static/captions/{{cap.caption_image}}">
+                            <img src="static/captions/{{post.caption_image}}">
                         </div>
                         <div class="caption-text">
-                            <p>{{cap.caption}}</p>
+                            <p>{{post.caption}}</p>
                         </div>
+                       
                     </div>
                 {% endfor %}
                 
