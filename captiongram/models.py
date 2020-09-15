@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=True)
     liked_posts = db.relationship('Post', secondary=LikedPost, backref=db.backref('LikedBy', lazy=True), lazy=True)
+    user_comment = db.relationship('Comment', backref='CommentBy', lazy=True)
     
     def __repr__(self):
         return f"User('{self.first_name + self.last_name}', '{self.email}', '{self.first_name}')"
@@ -39,10 +40,19 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     user_name = db.Column(db.String(50),nullable=False)
     up_loaded = db.Column(db.DateTime, nullable = False)
+    post_comment = db.relationship('Comment', backref='CommentOn', lazy=True)
 
     def __repr__(self):
-        return f"Caption('{self.caption}')"
+        return f"Post('{self.id},{self.caption}')"
 
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
+    comment = db.Column(db.String(120), nullable=True)
+
+    def __repr__(self):
+        return f"Comment({self.user_id}, {self.comment})"
 
 
 

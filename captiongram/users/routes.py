@@ -11,8 +11,8 @@ from datetime import datetime
 
 #custom modues 
 from captiongram import db, bcrypt,login_manager
-from captiongram.users.forms import RegistrationForm, LoginForm
-from captiongram.models import User,Post
+from captiongram.users.forms import RegistrationForm, LoginForm, CommentForm
+from captiongram.models import User,Post, Comment
 from . import helper
 
 #caption generation part
@@ -204,4 +204,36 @@ def like_action(post_id, action):
     if action == 'unlike':
         current_user.unlike_post(post)
         db.session.commit()
-    return redirect(url_for('users.home'))
+
+    print(request.url)
+    return redirect(request.referrer)
+
+@users.route('/add_comment/<post_id>', methods=['GET', 'POST'])
+@login_required
+def add_comment(post_id):
+    post = Post.query.get_or_404(post_id)
+    like_count = len(post.LikedBy)
+    comments = Comment.query.filter_by(post_id=post_id).all()
+    comments_with_user=list()
+
+    for comment in comments:
+        user = User.query.filter_by(id=comment.user_id).first()
+        comments_with_user.append([user.first_name+" "+user.last_name,comment.comment])
+
+    form = CommentForm()
+
+    if request.method == "POST":
+        if form.validate_on_submit():
+            return redirect(url_for('users.post_comment',post_id=post_id, comment_text=form.comment.data))
+
+
+    return render_template('add_comment.html',user=current_user, post=post, like_count=like_count, form=form, comments=comments_with_user)
+
+@users.route('/post_comment/<post_id>/<string:comment_text>')
+@login_required
+def post_comment(post_id,comment_text):
+    comment_on = Comment(user_id=current_user.id, post_id=post_id, comment=comment_text)
+    db.session.add(comment_on)
+    db.session.commit()
+
+    return redirect(url_for('users.add_comment',post_id=post_id))

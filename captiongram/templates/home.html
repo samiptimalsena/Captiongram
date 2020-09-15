@@ -11,7 +11,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
 
 	<!-- Add icon library -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,14 +44,6 @@
                 
                 {% for post,like_count in posts %}
                     <div class="caption-box">
-                        <div style="margin-top: 10px;">
-                            {% if current_user.has_liked_post(post) %}
-                                <a href="{{ url_for('users.like_action', post_id=post.id, action='unlike') }}">Unlike</a>
-                            {% else %}
-                                <a href="{{ url_for('users.like_action', post_id=post.id, action='like') }}">Like</a>
-                            {% endif %}
-                            <p>{{like_count}}</p>
-                        </div>
                         <div class="caption-user">
                             <img src="static/img/avatar.svg">
                             <p>{{post.user_name}}</p>
@@ -62,7 +54,15 @@
                         <div class="caption-text">
                             <p>{{post.caption}}</p>
                         </div>
-                       
+                        <div style="display: flex;justify-content: space-around;">
+                            {% if current_user.has_liked_post(post) %}
+                                <a  href="{{ url_for('users.like_action', post_id=post.id, action='unlike') }}">Unlike</a>
+                                {% else %}
+                                <a  href="{{ url_for('users.like_action', post_id=post.id, action='like') }}">Like</a>                              
+                            {% endif %}
+                            <p>{{like_count}}</p>
+                            <a href="{{ url_for('users.add_comment',post_id=post.id) }}">Comment</a>
+                        </div> 
                     </div>
                 {% endfor %}
                 
