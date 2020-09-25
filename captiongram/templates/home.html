@@ -54,14 +54,24 @@
                         <div class="caption-text">
                             <p>{{post.caption}}</p>
                         </div>
-                        <div style="display: flex;justify-content: space-around;">
+                        <div 
+                            style="display: flex;justify-content:start;padding-left:1.4em;font-size:1.4em"
+                        >
                             {% if current_user.has_liked_post(post) %}
-                                <a  href="{{ url_for('users.like_action', post_id=post.id, action='unlike') }}">Unlike</a>
-                                {% else %}
-                                <a  href="{{ url_for('users.like_action', post_id=post.id, action='like') }}">Like</a>                              
+                                <a  href="{{ url_for('users.like_action', post_id=post.id, action='unlike') }}">
+                                    <i class="fas fa-heart" style="color:#E64E5F"></i>
+                                </a>
+                            {% else %}
+                                <a  href="{{ url_for('users.like_action', post_id=post.id, action='like') }}">
+                                    <i class="far fa-heart" style="color:#495057"></i>
+                                </a>                              
                             {% endif %}
-                            <p>{{like_count}}</p>
-                            <a href="{{ url_for('users.add_comment',post_id=post.id) }}">Comment</a>
+                            <p style="padding-left:8px;padding-right:12px;color:#818181;font-size:.65em;padding-top:.4em">
+                                {{like_count}} likes
+                            </p>
+                            <a href="{{ url_for('users.add_comment',post_id=post.id) }}">
+                                <i class="far fa-comment" style="color:#495057"></i>
+                            </a>
                         </div> 
                     </div>
                 {% endfor %}

@@ -185,8 +185,8 @@
 
 .caption-text p{
 	display: block;
-	height: 60px;
-	padding: 6px 7px;
+	height: auto;
+	padding: 8px 7px;
 	font-size: .9em;
 	color:#818181;
 	text-align: center;
@@ -412,9 +412,9 @@
 
 	.caption-text p{
 		display: block;
-		height: 60px;
-		padding: 6px 7px;
-		font-size: .9em;
+		height: auto;
+		padding: 8px 2.4em;
+		font-size: 1.1em;
 		color:#818181;
 		text-align: center;
 		background-color: #fff;
