@@ -28,7 +28,17 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
 
 class CommentForm(FlaskForm):
-    comment = TextAreaField('Comment', validators=[DataRequired(),Length(min=2, max=120)])
+    comment = TextAreaField(
+        'Comment',
+        validators=[DataRequired(),Length(min=2, max=120)],
+        render_kw={
+            "placeholder": "Add your comment here",
+            "rows":1,
+            "cols":40,
+
+            "style":"font-size:1.1em;color:gray;font-weight:bold;resize: none;padding:.4em 1em;border-radius:2px"
+        }
+    )
 
     submit = SubmitField('Post')
     

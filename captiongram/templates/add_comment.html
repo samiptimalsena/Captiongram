@@ -44,39 +44,58 @@
                     <div class="caption-text">
                         <p>{{post.caption}}</p>
                     </div>
-                    <div style="display: flex;justify-content: space-around;">
+                    <div style="display: flex;justify-content:start;padding-left:1.8em;font-size:1.4em">
                         {% if current_user.has_liked_post(post) %}
-                            <a href="{{ url_for('users.like_action', post_id=post.id, action='unlike') }}">Unlike</a>
+                            <a  href="{{ url_for('users.like_action', post_id=post.id, action='unlike') }}">
+                                <i class="fas fa-heart" style="color:#E64E5F"></i>
+                            </a>
                         {% else %}
-                            <a href="{{ url_for('users.like_action', post_id=post.id, action='like') }}">Like</a>
+                            <a  href="{{ url_for('users.like_action', post_id=post.id, action='like') }}">
+                                <i class="far fa-heart" style="color:#495057"></i>
+                            </a>                              
                         {% endif %}
-                        <p>{{like_count}}</p>
+                        <p style="padding-left:8px;padding-right:12px;color:#818181;font-size:.65em;padding-top:.4em">
+                            {{like_count}} likes
+                        </p>
+                        <a href="{{ url_for('users.add_comment',post_id=post.id) }}">
+                                <i class="far fa-comment" style="color:#495057"></i>
+                        </a>
                     </div> 
+
+                    <div style="margin-top:14px">
+                        {% if comments|length > 0 %}
+                            {% for comment in comments %}
+                                <div style="text-align:left;display:flex;margin-bottom:20px;padding-left:1.8em">
+                                    <img src="../static/img/avatar.svg" style="width:50px;height:50px">
+                                    <div style="padding-left:8px">
+                                        <p><b>{{ comment[0] }}</b></p>
+                                        <p style="font-size:.9em;color:gray">{{ comment[1] }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %} 
+
+                        <form method="POST" action="" 
+                            style="text-align: left;
+                                    padding-left: 1.8em;
+                                    padding-bottom: .8em;
+                                    display:flex;"
+                        >
+                            {{form.hidden_tag()}}
+                            {% if form.comment.errors %}
+                            {{ form.comment(class='form-control form-control-lg is-invalid', placeholder="Addd your comment") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.comment.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.comment(class='form-control form-control-lg') }}
+                            {% endif %}
+                            {{ form.submit(class='btn btn-outline-info') }}
+                        </form>
+                    </div>
                 </div>
-                <div>
-                    <form method="POST" action="">
-                        {{form.hidden_tag()}}
-                        {{ form.comment.label(class='form-control-label') }}
-                        {% if form.comment.errors %}
-                        {{ form.comment(class='form-control form-control-lg is-invalid') }}
-                            <div class="invalid-feedback">
-                                {% for error in form.comment.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
-                        {% else %}
-                            {{ form.comment(class='form-control form-control-lg') }}
-                        {% endif %}
-                        {{ form.submit(class='btn btn-outline-info') }}
-                    </form>
-                </div>
-                {% if comments|length > 0 %}
-                    {% for comment in comments %}
-                        <p>{{ comment[0] }}</p>
-                        <p>{{ comment[1] }}</p>
-                        <br/>
-                    {% endfor %}
-                {% endif %}
             </div>
         </div>
         <div class="side-profile">
