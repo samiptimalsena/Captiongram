@@ -2,8 +2,8 @@ import  os
 from PIL import Image
 from flask import url_for, current_app
 
-from .model_inference import model_prediction
-#from .model import evaluate
+#from .model_inference import model_prediction
+from .model import evaluate
 
 def generate_caption(image_name):
     """
@@ -13,9 +13,9 @@ def generate_caption(image_name):
     """
     picture_path = os.path.join(current_app.root_path, 'static/temp', image_name)
     
-    #result=" ".join(evaluate(picture_path)[:-1])+"."
+    result=" ".join(evaluate(picture_path)[:-1])+"."
 
-    result=model_prediction(picture_path)
+    #result=model_prediction(picture_path)
     
     return result
 
